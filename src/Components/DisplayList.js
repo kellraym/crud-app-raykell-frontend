@@ -4,8 +4,10 @@ import { Route, Link, Switch } from 'react-router-dom';
 export default function DisplayList() {
   const [list, setList] = useState([])
 
+
+
   function getList() {
-    fetch(`http://localhost:3001/`)
+    fetch(`http://https://crud-app-raykell.herokuapp.com/`)
       .then(res => res.json())
       .then(json => setList(json))
   }
