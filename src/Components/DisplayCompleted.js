@@ -24,7 +24,7 @@ export default function DisplayCompleted() {
 
   function deleteItem(id) {
     fetch(`https://crud-app-raykell-backend.herokuapp.com/delete/${id}`, {
-      method: 'delete',
+      method: 'DELETE',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -56,7 +56,7 @@ export default function DisplayCompleted() {
                 <button onClick={() => markNotComplete(item.id)}>Uncomplete</button>
               </span>
               <span>
-                <button onCLick={() => deleteItem(item.id)}>DELETE FOREVER!</button>
+                <button onClick={() => deleteItem(item.id)}>DELETE FOREVER!</button>
               </span>
             </div>
           )
