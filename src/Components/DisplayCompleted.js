@@ -12,6 +12,16 @@ export default function DisplayCompleted() {
       .then(json => setCompletedList(json))
   }
 
+  function markNotComplete(id) {
+    fetch(`https://crud-app-raykell-backend.herokuapp.com/complete/not/${id}`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+    })
+  }
+
   useEffect(() => {
     getCompleteList()
   }, [])
@@ -33,7 +43,7 @@ export default function DisplayCompleted() {
                 <br />
               </span>
               <span>
-                <button>Uncomplete</button>
+                <button onClick={() => markNotComplete(item.id)}>Uncomplete</button>
               </span>
               <span>
                 <Link to={`edit/${item.id}`}>
