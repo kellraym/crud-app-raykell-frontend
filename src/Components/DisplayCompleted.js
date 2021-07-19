@@ -7,7 +7,7 @@ export default function DisplayCompleted() {
 
 
   function getCompleteList() {
-    fetch(`http://localhost:3001/complete`)
+    fetch(`https://crud-app-raykell.herokuapp.com/complete`)
       .then(res => res.json())
       .then(json => setCompletedList(json))
   }

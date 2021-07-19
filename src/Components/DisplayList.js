@@ -13,7 +13,7 @@ export default function DisplayList() {
   }
 
   function markComplete(id) {
-    fetch(`http://localhost:3001/complete/${id}`, {
+    fetch(`https://crud-app-raykell.herokuapp.com/${id}`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
