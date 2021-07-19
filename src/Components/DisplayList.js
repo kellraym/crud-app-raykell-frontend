@@ -7,13 +7,13 @@ export default function DisplayList() {
 
 
   function getList() {
-    fetch(`https://crud-app-raykell.herokuapp.com/`)
+    fetch(`https://crud-app-raykell-backend.herokuapp.com/`)
       .then(res => res.json())
       .then(json => setList(json))
   }
 
   function markComplete(id) {
-    fetch(`https://crud-app-raykell.herokuapp.com/${id}`, {
+    fetch(`https://crud-app-raykell-backend.herokuapp.com/complete${id}`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

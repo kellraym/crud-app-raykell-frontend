@@ -8,7 +8,7 @@ export default function AddItem() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch('https://crud-app-raykell.herokuapp.com/additem', {
+    fetch('https://crud-app-raykell-backend.herokuapp.com/additem', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
