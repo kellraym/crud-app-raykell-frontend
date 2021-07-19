@@ -1,0 +1,21 @@
+.hidden {
+  display: none;
+}
+
+.list-item:hover {
+  cursor: pointer;
+}
+
+/* ul {
+  list-style-type: none;
+}
+
+ul li input{
+  min-width: 200px;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+} */

@@ -1,0 +1,17 @@
+form h2{
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li input{
+  min-width: 200px;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
