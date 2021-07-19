@@ -7,7 +7,7 @@ export default function DisplayList() {
 
 
   function getList() {
-    fetch(`http://http://crud-app-raykell.herokuapp.com/`)
+    fetch(`http://crud-app-raykell.herokuapp.com/`)
       .then(res => res.json())
       .then(json => setList(json))
   }
