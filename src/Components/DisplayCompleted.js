@@ -11,6 +11,7 @@ export default function DisplayCompleted() {
     fetch(`https://crud-app-raykell-backend.herokuapp.com/complete`)
       .then(res => res.json())
       .then(json => setCompletedList(json))
+      // setUpdateList(!updateList);
   }
 
   function markNotComplete(id) {
@@ -21,8 +22,8 @@ export default function DisplayCompleted() {
         'Content-Type': 'application/json'
       },
     })
-    getCompleteList()
     setUpdateList(!updateList)
+    getCompleteList()
   }
 
   function deleteItem(id) {
@@ -33,8 +34,8 @@ export default function DisplayCompleted() {
         'Content-Type': 'application/json'
       },
     })
-    getCompleteList()
     setUpdateList(!updateList)
+    getCompleteList()
   }
 
   useEffect(() => {
@@ -46,13 +47,13 @@ export default function DisplayCompleted() {
     <div className="completed-list">
       <h2>⭐ Hall of Fame (your completed items)⭐</h2>
       <ol>
-        {completedList.map(item => {
+        {completedList.length >= 1 ? completedList.map(item => {
           return (
             <div>
               <li className="list-item" onClick={() => {
                 document.querySelector(`.item${item.id}`).classList.toggle('hidden');
               }}>
-                {`Name: ${item.name} Due By: ${item.due_date} `}
+                {`Name: ${item.name} Completed: ${item.updated_at.slice(0, 10)} `}
               </li>
               <span className={`item${item.id} hidden`}>
                 {item.description}
@@ -66,7 +67,8 @@ export default function DisplayCompleted() {
               </span>
             </div>
           )
-        })}
+        })
+        : `You have no completed items, boooo`}
       </ol>
     </div>
   )

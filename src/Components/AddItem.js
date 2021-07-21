@@ -1,10 +1,12 @@
 import '../Styles/AddItem.css';
 import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom'
 
 export default function AddItem() {
   const [name, setName] = useState('')
   const [dueDate, setDueDate] = useState('')
   const [description, setDescription] = useState('')
+  const history = useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -20,11 +22,8 @@ export default function AddItem() {
         description: description
       })
     })
-    alert(`Item added!`)
-    console.log(`default was prevented`, e.target)
-    setName('')
-    setDueDate('')
-    setDescription('')
+    alert(`'${name}' was added!\nGET TO WORK!`)
+    history.push('/')
   }
 
   return (
@@ -33,17 +32,17 @@ export default function AddItem() {
       <ul>
         <li>
           <label for="name">Item name: </label>
-          <input id="name" placeholder="name" onChange={(e) => setName(e.target.value)} value={name}></input></li>
+          <input id="name" placeholder="enter a name" onChange={(e) => setName(e.target.value)} value={name}></input></li>
         <li>
           <label for="due-date">Due date: </label>
           <input type="date" onChange={(e) => setDueDate(e.target.value)} value={dueDate} id="due-date" placeholder="due date"></input>
         </li>
         <li>
           <label id="desc-label" for="description">Description</label>
-          <textarea id="description" rows="5" cols="40" onChange={(e) => setDescription(e.target.value)} value={description} placeholder="description(optional)"></textarea>
+          <textarea id="description" rows="5" cols="40" onChange={(e) => setDescription(e.target.value)} value={description} placeholder="write a description(optional)"></textarea>
         </li>
         <li>
-          <button onClick={(e) => handleSubmit(e)}>SUBMIT!</button>
+          <button onClick={handleSubmit}>SUBMIT!</button>
         </li>
       </ul>
     </form>

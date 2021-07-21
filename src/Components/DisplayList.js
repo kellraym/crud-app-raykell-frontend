@@ -32,7 +32,7 @@ export default function DisplayList() {
   return (
     <ol>
       {list.map(item => {
-        if (item.due_date.slice(0, 10) === '1999-12-31'){
+        if (item.due_date.slice(0, 10) === '1999-12-31') {
           item.due_date = 'anytime'
         }
         return (
@@ -40,7 +40,7 @@ export default function DisplayList() {
             <li className="list-item" onClick={() => {
               document.querySelector(`.item${item.id}`).classList.toggle('hidden');
             }}>
-              {`Name: ${item.name} Due By: ${item.due_date.slice(0, 10)} Complete: ${item.complete}`}
+              {`Name: ${item.name} Due By: ${item.due_date.slice(0, 10)}`}
             </li>
             <span className={`item${item.id} hidden`}>
               {item.description}
@@ -53,8 +53,9 @@ export default function DisplayList() {
               <Link to={{
                 pathname: `edit/${item.id}`,
                 values: {
+                  id: item.id,
                   name: item.name,
-                  dueDate: item.due_date,
+                  dueDate: (item.due_date !== 'anytime' ? item.due_date : '1999-12-31'),
                   description: item.description
                 }
               }}>
