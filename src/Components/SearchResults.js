@@ -58,7 +58,7 @@ export default function SearchResults(props) {
                 <li className="list-item" onClick={() => {
                   document.querySelector(`.item${item.id}`).classList.toggle('hidden');
                 }}>
-                  {`Name: ${item.name} Due By: ${item.due_date.slice(0, 10)} Completed: ${item.completed}`}
+                  {`Name: ${item.name} Due By: ${item.due_date.slice(0, 10)} Completed: ${item.complete}`}
                 </li>
                 <span className={`item${item.id} hidden`}>
                   {item.description}
