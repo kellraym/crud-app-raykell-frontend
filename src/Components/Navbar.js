@@ -1,16 +1,16 @@
 import '../Styles/Navbar.css';
 import React, { useState } from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [search, setSearch] = useState('')
-  const [searchResult, setSearchResult] = useState([])
+  // const [searchResult, setSearchResult] = useState([])
 
-  function performSearch() {
-    fetch(`https://crud-app-raykell-backend.herokuapp.com/search/?name=${search}`)
-      .then(res => res.json())
-      .then(json => setSearchResult(json))
-  }
+  // function performSearch() {
+  //   fetch(`https://crud-app-raykell-backend.herokuapp.com/search/?name=${search}`)
+  //     .then(res => res.json())
+  //     .then(json => setSearchResult(json))
+  // }
 
 
   return (
@@ -21,7 +21,14 @@ export default function Navbar() {
         <li><Link to="/complete">Completed</Link></li>
         <li className="search">
           <input type="text" placeholder="search by name" onChange={(e) => setSearch(e.target.value)} value={search} />
-          <Link to={`/search/?name=${search}`}><button>search</button></Link>
+          <Link to={{
+            pathname: `/search/?name=${search}`,
+            values: {
+              search: search,
+            }
+          }}>
+            <button>search</button>
+          </Link>
         </li>
       </ul>
     </nav>
