@@ -3,6 +3,7 @@ import { Route, Link, Switch } from 'react-router-dom';
 
 export default function DisplayList() {
   const [list, setList] = useState([])
+  const [updateList, setUpdateList] = useState(false)
 
 
 
@@ -14,27 +15,32 @@ export default function DisplayList() {
 
   function markComplete(id) {
     fetch(`https://crud-app-raykell-backend.herokuapp.com/complete/${id}`, {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
     })
+    setUpdateList(!updateList)
+    getList()
   }
 
   useEffect(() => {
     getList()
-  }, [])
+  }, [updateList])
 
   return (
     <ol>
       {list.map(item => {
+        if (item.due_date.slice(0, 10) === '1999-12-31'){
+          item.due_date = 'anytime'
+        }
         return (
           <div>
             <li className="list-item" onClick={() => {
               document.querySelector(`.item${item.id}`).classList.toggle('hidden');
             }}>
-              {`Name: ${item.name} Due By: ${item.due_date} `}
+              {`Name: ${item.name} Due By: ${item.due_date.slice(0, 10)} Complete: ${item.complete}`}
             </li>
             <span className={`item${item.id} hidden`}>
               {item.description}
@@ -44,7 +50,14 @@ export default function DisplayList() {
               <button onClick={() => markComplete(item.id)}>Complete</button>
             </span>
             <span>
-              <Link to={`edit/${item.id}`}>
+              <Link to={{
+                pathname: `edit/${item.id}`,
+                values: {
+                  name: item.name,
+                  dueDate: item.due_date,
+                  description: item.description
+                }
+              }}>
                 <button>Edit</button>
               </Link>
             </span>

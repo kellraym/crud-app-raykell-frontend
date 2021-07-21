@@ -16,11 +16,11 @@ export default function AddItem() {
       },
       body: JSON.stringify({
         name: name,
-        dueDate: dueDate,
+        dueDate: dueDate || `1999-12-31`,
         description: description
       })
     })
-    alert(`You have pressed the submit button`)
+    alert(`Item added!`)
     console.log(`default was prevented`, e.target)
     setName('')
     setDueDate('')

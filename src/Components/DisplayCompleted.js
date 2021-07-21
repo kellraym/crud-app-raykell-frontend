@@ -4,6 +4,7 @@ import { Route, Link, Switch } from 'react-router-dom';
 
 export default function DisplayCompleted() {
   const [completedList, setCompletedList] = useState([])
+  const [updateList, setUpdateList] = useState(false)
 
 
   function getCompleteList() {
@@ -14,12 +15,14 @@ export default function DisplayCompleted() {
 
   function markNotComplete(id) {
     fetch(`https://crud-app-raykell-backend.herokuapp.com/complete/not/${id}`, {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
     })
+    getCompleteList()
+    setUpdateList(!updateList)
   }
 
   function deleteItem(id) {
@@ -30,11 +33,14 @@ export default function DisplayCompleted() {
         'Content-Type': 'application/json'
       },
     })
+    getCompleteList()
+    setUpdateList(!updateList)
   }
 
   useEffect(() => {
     getCompleteList()
-  }, [])
+  }, [updateList])
+
 
   return (
     <div className="completed-list">
