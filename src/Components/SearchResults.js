@@ -1,11 +1,14 @@
 import '../Styles/SearchResults.css'
-import React, { useState, useEffect } from 'react';
+import AppContext from '../Context/AppContext';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 export default function SearchResults(props) {
   const [search, setSearch] = useState(props.location.values.search)
+  const [key, setKey] = useState(props.location.key)
   const [resultList, setResultList] = useState([])
   const [updateList, setUpdateList] = useState(false)
+  const { updatePage } = useContext(AppContext)
   const history = useHistory()
 
   function performSearch() {
@@ -27,8 +30,19 @@ export default function SearchResults(props) {
   }
 
   useEffect(() => {
+    setKey(props.location.key)
+  }, [props.location.key])
+
+  useEffect(() => {
+    setSearch(props.location.values.search)
     performSearch()
-  }, [updateList])
+  }, [key])
+
+  useEffect(() => {
+    performSearch()
+  }, [search])
+  // all three of these are needed. useEffect can watch params, pretty neat
+
 
   return (
     <div>
@@ -63,7 +77,7 @@ export default function SearchResults(props) {
                       description: item.description
                     }
                   }}>
-                    <button onClick={() => history.push('/')}>Edit</button>
+                    <button>Edit</button>
                   </Link>
                 </span>
               </div>
@@ -71,6 +85,7 @@ export default function SearchResults(props) {
           })
           : `Nothing found, sorry`}
       </ul>
+      {/* <button onCLick={() => setKey(props.location.key)}>press me</button> */}
     </div>
   )
 }
