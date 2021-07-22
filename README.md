@@ -24,5 +24,5 @@ Add an item allows a user to inupt information about a new items name, due date 
 If incorrect data is entered when adding an item, the edit button can be used to update the database via a patch request. The submit button's on click funtionality includes an invocation of preventDefault to avoid a page re-render. Instead it acts as a react router-link back to the home page in addition to sending a request to the back-end.
 
 ## Completed
-The Completed page shows a list of all items that have been marked as complete. From here, completed items can be marked uncomplete and returned to the to do list or deleted from the database entirely through use of their respective buttons.
+The `Completed` page shows a list of all items that have been marked as complete. From here, completed items can be marked uncomplete and returned to the to do list or deleted from the database entirely through use of their respective buttons.
  
