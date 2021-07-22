@@ -5,8 +5,6 @@ import { Link, useHistory } from 'react-router-dom';
 
 export default function Navbar() {
   const [search, setSearch] = useState('')
-  const { updatePage, setUpdatePage } = useContext(AppContext)
-  const history = useHistory()
 
   return (
     <nav>

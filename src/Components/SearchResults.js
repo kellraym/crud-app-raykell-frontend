@@ -54,38 +54,40 @@ export default function SearchResults(props) {
             }
             return (
               <div className="to-dos">
-            <li className="list-item" onClick={() => {
-              document.querySelector(`.item${item.id}`).classList.toggle('hidden');
-            }}>
-              <span>
-                {item.name} 
-                <br/><br/>
-              <span className={`item${item.id} description hidden`}>
-                {item.description}
-              </span>
-              </span>
-              <span className="due-date">
-                {`Due: ${item.due_date.slice(0, 10)}`}
-              </span>
-              <br />
-            </li>
-            <span>
-              <button onClick={() => markComplete(item.id)}>Complete</button>
-            </span>
-            <span>
-              <Link to={{
-                pathname: `edit/${item.id}`,
-                values: {
-                  id: item.id,
-                  name: item.name,
-                  dueDate: (item.due_date !== 'anytime' ? item.due_date : '1999-12-31'),
-                  description: item.description
-                }
-              }}>
-                <button>Edit</button>
-              </Link>
-            </span>
-          </div>
+                <li className="list-item" onClick={() => {
+                  document.querySelector(`.item${item.id}`).classList.toggle('hidden');
+                }}>
+                  <span>
+                    {item.name}
+                    <br /><br />
+                    <span className={`item${item.id} description hidden`}>
+                      {item.description}
+                    </span>
+                  </span>
+                  <span className="due-date">
+                    {`Due: ${item.due_date.slice(0, 10)}`}
+                  </span>
+                  <br />
+                </li>
+                <span>
+                  <button onClick={() => markComplete(item.id)}>
+                    Complete
+                  </button>
+                </span>
+                <span>
+                  <Link to={{
+                    pathname: `edit/${item.id}`,
+                    values: {
+                      id: item.id,
+                      name: item.name,
+                      dueDate: (item.due_date !== 'anytime' ? item.due_date : '1999-12-31'),
+                      description: item.description
+                    }
+                  }}>
+                    <button>Edit</button>
+                  </Link>
+                </span>
+              </div>
             )
           })
           : `Nothing found, sorry`}

@@ -1,5 +1,4 @@
 import './App.css';
-// import DisplayList from './Components/DisplayList';
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import AddItem from './Components/AddItem';
@@ -9,9 +8,6 @@ import SearchResults from './Components/SearchResults';
 import AppContext from './Context/AppContext';
 import { useContext, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// const port = process.env.port || 3000;
-
-// App.listen(port)
 
 function App() {
   const [updatePage, setUpdatePage] = useState(false)
@@ -37,7 +33,6 @@ function App() {
         </Switch>
       </Router>
     </AppContext.Provider>
-
   );
 }
 
