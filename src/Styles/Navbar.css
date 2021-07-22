@@ -1,5 +1,19 @@
+nav {
+  background-color: rgb(48, 48, 48);
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+}
+
+nav a:hover {
+  color: gold;
+  text-shadow: green;
+}
+
 nav ul {
-  padding: 10px 0px;
+  padding: 10px 0px 0;
   margin-top: 0px;
   display: flex;
   flex-direction: row;
@@ -9,5 +23,14 @@ nav ul {
 nav ul li {
   padding: 0px 10px;
 }
+
+li:last-of-type {
+  margin-left: auto;
+}
+
+form button{
+  margin-left: 5px;
+}
+
 
 

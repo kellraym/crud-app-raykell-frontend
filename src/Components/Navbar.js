@@ -14,16 +14,18 @@ export default function Navbar() {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/additem">Add an item</Link></li>
         <li><Link to="/complete">Completed</Link></li>
-        <li className="search">
-          <input type="text" placeholder="search by name" onChange={(e) => { setSearch(e.target.value) }} value={search} />
-          <Link to={{
-            pathname: `/search/?name=${search}`,
-            values: {
-              search: search,
-            }
-          }}>
-            <button onClick={() => setSearch('')}>search</button>
-          </Link>
+        <li>
+          <form className="search">
+            <input type="text" placeholder="search by name" onChange={(e) => { setSearch(e.target.value) }} value={search} />
+            <Link to={{
+              pathname: `/search/?name=${search}`,
+              values: {
+                search: search,
+              }
+            }}>
+              <button onClick={() => setSearch('')}>search</button>
+            </Link>
+          </form>
         </li>
       </ul>
     </nav>

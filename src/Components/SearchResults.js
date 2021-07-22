@@ -1,15 +1,14 @@
 import '../Styles/SearchResults.css'
 import AppContext from '../Context/AppContext';
 import React, { useState, useEffect, useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function SearchResults(props) {
   const [search, setSearch] = useState(props.location.values.search)
+  // page fails to render after refresh because search is set to undefined
   const [key, setKey] = useState(props.location.key)
   const [resultList, setResultList] = useState([])
   const [updateList, setUpdateList] = useState(false)
-  const { updatePage } = useContext(AppContext)
-  const history = useHistory()
 
   function performSearch() {
     fetch(`https://crud-app-raykell-backend.herokuapp.com/search/?name=${search}`)
