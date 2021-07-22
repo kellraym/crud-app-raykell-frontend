@@ -9,7 +9,6 @@ nav a {
 
 nav a:hover {
   color: gold;
-  text-shadow: green;
 }
 
 nav ul {
@@ -17,19 +16,22 @@ nav ul {
   margin-top: 0px;
   display: flex;
   flex-direction: row;
-  border: solid black 2px;
 }
 
 nav ul li {
   padding: 0px 10px;
 }
 
-li:last-of-type {
+nav li:last-of-type {
   margin-left: auto;
 }
 
 form button{
-  margin-left: 5px;
+  margin-left: 2px;
+}
+
+.search button {
+  padding: 0;
 }
 
 

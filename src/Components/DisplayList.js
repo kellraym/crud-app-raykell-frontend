@@ -1,3 +1,4 @@
+import '../Styles/DisplayList.css'
 import React, { useState, useEffect } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 
@@ -36,16 +37,22 @@ export default function DisplayList() {
           item.due_date = 'anytime'
         }
         return (
-          <div>
+          <div className="to-dos">
             <li className="list-item" onClick={() => {
               document.querySelector(`.item${item.id}`).classList.toggle('hidden');
             }}>
-              {`Name: ${item.name} Due By: ${item.due_date.slice(0, 10)}`}
-            </li>
-            <span className={`item${item.id} hidden`}>
-              {item.description}
+              <span>
+                {item.name} 
+                <br/><br/>
+              <span className={`item${item.id} description hidden`}>
+                {item.description}
+              </span>
+              </span>
+              <span className="due-date">
+                {`Due: ${item.due_date.slice(0, 10)}`}
+              </span>
               <br />
-            </span>
+            </li>
             <span>
               <button onClick={() => markComplete(item.id)}>Complete</button>
             </span>

@@ -1,7 +1,26 @@
+body {
+  background-color: rgb(56, 56, 56)
+}
+
+h1, h2 {
+  color: rgb(255, 255, 255);
+}
+
 .hidden {
   display: none;
 }
 
 .list-item:hover {
   cursor: pointer;
+}
+
+button {
+  background-color:rgb(56, 56, 56);
+  color: white;
+  padding: 8px;
+}
+
+button:hover {
+  background-color:rgb(238, 255, 0);
+  color: black;
 }

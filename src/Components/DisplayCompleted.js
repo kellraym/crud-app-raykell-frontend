@@ -11,7 +11,7 @@ export default function DisplayCompleted() {
     fetch(`https://crud-app-raykell-backend.herokuapp.com/complete`)
       .then(res => res.json())
       .then(json => setCompletedList(json))
-      // setUpdateList(!updateList);
+    // setUpdateList(!updateList);
   }
 
   function markNotComplete(id) {
@@ -44,32 +44,40 @@ export default function DisplayCompleted() {
 
 
   return (
-    <div className="completed-list">
+    <div>
       <h2>⭐ Hall of Fame (your completed items)⭐</h2>
-      <ol>
-        {completedList.length >= 1 ? completedList.map(item => {
-          return (
-            <div>
-              <li className="list-item" onClick={() => {
-                document.querySelector(`.item${item.id}`).classList.toggle('hidden');
-              }}>
-                {`Name: ${item.name} Completed: ${item.updated_at.slice(0, 10)} `}
-              </li>
-              <span className={`item${item.id} hidden`}>
-                {item.description}
-                <br />
-              </span>
-              <span>
-                <button onClick={() => markNotComplete(item.id)}>Uncomplete</button>
-              </span>
-              <span>
-                <button onClick={() => deleteItem(item.id)}>DELETE FOREVER!</button>
-              </span>
-            </div>
-          )
-        })
-        : `You have no completed items, boooo`}
-      </ol>
+      <div className="completed-list">
+        <ol>
+          {completedList.length >= 1 ? completedList.map(item => {
+            return (
+              <div className="to-dos">
+                <li className="list-item" onClick={() => {
+                  document.querySelector(`.item${item.id}`).classList.toggle('hidden');
+                }}>
+                  <span>
+                    {item.name}
+                  <br /><br />
+                  <span className={`item${item.id} hidden`}>
+                    {item.description}
+                  </span>
+                  </span>
+                  <span className="due-date">
+                    {`Completed: ${item.updated_at.slice(0, 10)} `}
+                  </span>
+                </li>
+                <span>
+                  <button onClick={() => markNotComplete(item.id)}>Uncomplete</button>
+                </span>
+                <span>
+                  <button onClick={() => deleteItem(item.id)}>DELETE</button>
+                </span>
+              </div>
+            )
+          })
+            : `You have no completed items, boooo`}
+        </ol>
+      </div>
     </div>
+
   )
 }

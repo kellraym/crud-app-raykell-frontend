@@ -53,33 +53,39 @@ export default function SearchResults(props) {
               item.due_date = 'anytime'
             }
             return (
-              <div>
-                <li className="list-item" onClick={() => {
-                  document.querySelector(`.item${item.id}`).classList.toggle('hidden');
-                }}>
-                  {`Name: ${item.name} Due By: ${item.due_date.slice(0, 10)} Completed: ${item.complete}`}
-                </li>
-                <span className={`item${item.id} hidden`}>
-                  {item.description}
-                  <br />
-                </span>
-                <span>
-                  <button onClick={() => markComplete(item.id)}>Complete</button>
-                </span>
-                <span>
-                  <Link to={{
-                    pathname: `edit/${item.id}`,
-                    values: {
-                      id: item.id,
-                      name: item.name,
-                      dueDate: (item.due_date !== 'anytime' ? item.due_date : '1999-12-31'),
-                      description: item.description
-                    }
-                  }}>
-                    <button>Edit</button>
-                  </Link>
-                </span>
-              </div>
+              <div className="to-dos">
+            <li className="list-item" onClick={() => {
+              document.querySelector(`.item${item.id}`).classList.toggle('hidden');
+            }}>
+              <span>
+                {item.name} 
+                <br/><br/>
+              <span className={`item${item.id} description hidden`}>
+                {item.description}
+              </span>
+              </span>
+              <span className="due-date">
+                {`Due: ${item.due_date.slice(0, 10)}`}
+              </span>
+              <br />
+            </li>
+            <span>
+              <button onClick={() => markComplete(item.id)}>Complete</button>
+            </span>
+            <span>
+              <Link to={{
+                pathname: `edit/${item.id}`,
+                values: {
+                  id: item.id,
+                  name: item.name,
+                  dueDate: (item.due_date !== 'anytime' ? item.due_date : '1999-12-31'),
+                  description: item.description
+                }
+              }}>
+                <button>Edit</button>
+              </Link>
+            </span>
+          </div>
             )
           })
           : `Nothing found, sorry`}
