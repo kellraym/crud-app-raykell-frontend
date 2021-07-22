@@ -17,7 +17,7 @@ export default function AddItem() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: name,
+        name: name || 'i need a name',
         dueDate: dueDate || `1999-12-31`,
         description: description
       })

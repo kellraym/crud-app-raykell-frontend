@@ -18,7 +18,7 @@ export default function EditItem(props) {
       },
       body: JSON.stringify({
         id: id,
-        name: newName,
+        name: newName || ' i need a name',
         dueDate: newDueDate || `1999-12-31`,
         description: newDescription
       })
