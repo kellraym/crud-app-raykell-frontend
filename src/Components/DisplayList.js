@@ -42,14 +42,14 @@ export default function DisplayList() {
               document.querySelector(`.item${item.id}`).classList.toggle('hidden');
             }}>
               <span>
-                {item.name} 
-                <br/><br/>
+                <h3>{item.name}</h3>
               <span className={`item${item.id} description hidden`}>
                 {item.description}
               </span>
               </span>
               <span className="due-date">
-                {`Due: ${item.due_date.slice(0, 10)}`}
+
+                {item.due_date.slice(0, 10)}
               </span>
               <br />
             </li>

@@ -5,19 +5,18 @@
 }
 
 .list-item {
+  border-radius: 0 0 30% 0;
   display: flex;
   width: 100%;
   background-color: rgb(48, 48, 48);
   color: white;
-  margin-right: 20px;
   padding: 20px;
-  border-bottom: solid rgb(180, 0, 0) 1px
+  border-bottom: solid rgb(180, 0, 0) 1px;
+  /* max-width: 300px; */
 }
 
 .due-date {
+  text-align: center;
   margin-left: auto;
-}
-
-.description {
-  margin-top: 10px;
+  min-width: 120px;
 }

@@ -23,7 +23,10 @@ export default function Navbar() {
                 search: search,
               }
             }}>
-              <button onClick={() => setSearch('')}>search</button>
+              <button onClick={(e) => {
+                e.preventDefault()
+                setSearch('')
+                }}>search</button>
             </Link>
           </form>
         </li>
