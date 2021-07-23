@@ -30,8 +30,8 @@ Upon clicking an associated edit button, the user is routed to an `Edit` page fo
 The `Completed` page shows a list of all items that have been marked as complete. From here, completed items can be marked uncomplete and returned to the to do list or deleted from the database entirely through use of their respective buttons.
 
 ## SearchResults
-Included in the navbar is a search field that displays items containing the search term in their name. The search button passes the search term and routes to a separate `SearchResults` component. This component sends a search query to the database to get all items containing the search term in their name and returns a list similar to the one seen on the home page.
+Included in the navbar is a search field that displays items containing the search term in their name. The search button passes the search term and routes to a separate `SearchResults` component. This component sends a search query to the database to get all items containing the search term in their name and returns a list similar to the one seen on the home page, but including whether the item has been completed or not. Each item on the list of results has a working `complete` and `edit` button as it would on the front page. (Note: pressing the complete button of an already completed item will only result in an alert)
 
 ## Cypress testing!
-A suite of cypress tests are included. This suite runs through creation, editing, search, completion, and deletion of a to do item. These tests will run from a local instance of this application's front and. All tests have been tested against the deployed back end. 
+A suite of cypress tests are included. This suite runs through creation, editing, search, completion, and deletion of a to do item. All tests run from the deployed frontend to the deployed backend. Please allow some time for front and back to spin up before running the tests.
  

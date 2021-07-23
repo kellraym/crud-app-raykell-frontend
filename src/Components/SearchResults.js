@@ -42,7 +42,7 @@ export default function SearchResults(props) {
   }, [search])
   // all three of these are needed. useEffect can watch params, pretty neat
 
-  
+
   return (
     <div>
       <h2>searching for {`'${search}'`} <br /> I hope we find it ¯\_(ツ)_/¯</h2>
@@ -71,7 +71,13 @@ export default function SearchResults(props) {
                   <br />
                 </li>
                 <span>
-                  <button className={`complete-${formattedName}`}onClick={() => markComplete(item.id)}>
+                  <button className={`complete-${formattedName}`} onClick={() => {
+                    if (!item.complete) {
+                      markComplete(item.id)
+                    } else {
+                      alert(`'${item.name}' already completed`)
+                    }
+                  }}>
                     Complete
                   </button>
                 </span>
