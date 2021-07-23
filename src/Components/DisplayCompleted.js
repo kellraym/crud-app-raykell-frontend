@@ -49,6 +49,8 @@ export default function DisplayCompleted() {
       <div className="completed-list">
         <ol>
           {completedList.length >= 1 ? completedList.map(item => {
+
+            const formattedName = item.name.split(' ').join()
             return (
               <div className="to-dos">
                 <li className="list-item" onClick={() => {
@@ -66,10 +68,10 @@ export default function DisplayCompleted() {
                   </span>
                 </li>
                 <span>
-                  <button onClick={() => markNotComplete(item.id)}>Uncomplete</button>
+                  <button className={`uncomplete-${formattedName}`} onClick={() => markNotComplete(item.id)}>Uncomplete</button>
                 </span>
                 <span>
-                  <button onClick={() => deleteItem(item.id)}>DELETE</button>
+                  <button className={`delete-${formattedName}`}onClick={() => deleteItem(item.id)}>DELETE</button>
                 </span>
               </div>
             )

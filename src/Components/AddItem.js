@@ -22,7 +22,7 @@ export default function AddItem() {
         description: description
       })
     })
-    alert(`'${name}' was added!\nGET TO WORK!`)
+    alert(`'${name}' added to the list!`)
     history.push('/')
   }
 

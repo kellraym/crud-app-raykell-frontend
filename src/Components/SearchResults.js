@@ -1,7 +1,6 @@
 import '../Styles/SearchResults.css'
-import AppContext from '../Context/AppContext';
 import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 export default function SearchResults(props) {
   const [search, setSearch] = useState(props.location.values.search)
@@ -9,6 +8,7 @@ export default function SearchResults(props) {
   const [key, setKey] = useState(props.location.key)
   const [resultList, setResultList] = useState([])
   const [updateList, setUpdateList] = useState(false)
+  const history = useHistory()
 
   function performSearch() {
     fetch(`https://crud-app-raykell-backend.herokuapp.com/search/?name=${search}`)
@@ -42,13 +42,14 @@ export default function SearchResults(props) {
   }, [search])
   // all three of these are needed. useEffect can watch params, pretty neat
 
-
+  
   return (
     <div>
       <h2>searching for {`'${search}'`} <br /> I hope we find it ¯\_(ツ)_/¯</h2>
       <ul>
         {resultList.length >= 1 ?
           resultList.map(item => {
+            const formattedName = item.name.split(' ').join()
             if (item.due_date.slice(0, 10) === '1999-12-31') {
               item.due_date = 'anytime'
             }
@@ -70,7 +71,7 @@ export default function SearchResults(props) {
                   <br />
                 </li>
                 <span>
-                  <button onClick={() => markComplete(item.id)}>
+                  <button className={`complete-${formattedName}`}onClick={() => markComplete(item.id)}>
                     Complete
                   </button>
                 </span>
@@ -84,7 +85,7 @@ export default function SearchResults(props) {
                       description: item.description
                     }
                   }}>
-                    <button>Edit</button>
+                    <button className={`edit-${formattedName}`} onClick={() => history.push('/')}>Edit</button>
                   </Link>
                 </span>
               </div>

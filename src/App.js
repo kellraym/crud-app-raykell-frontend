@@ -5,8 +5,7 @@ import AddItem from './Components/AddItem';
 import EditItem from './Components/EditItem';
 import DisplayCompleted from './Components/DisplayCompleted';
 import SearchResults from './Components/SearchResults';
-import AppContext from './Context/AppContext';
-import { useContext, useState, useEffect } from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -14,10 +13,6 @@ function App() {
   document.title = 'To Do List 2.0'
 
   return (
-    <AppContext.Provider value={{
-      updatePage,
-      setUpdatePage
-    }}>
       <Router>
         <Switch>
           <div>
@@ -32,7 +27,6 @@ function App() {
           </div>
         </Switch>
       </Router>
-    </AppContext.Provider>
   );
 }
 

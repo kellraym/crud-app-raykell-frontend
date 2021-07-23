@@ -33,9 +33,12 @@ export default function DisplayList() {
   return (
     <ol>
       {list.map(item => {
+        const formattedName = item.name.split(' ').join()
+
         if (item.due_date.slice(0, 10) === '1999-12-31') {
           item.due_date = 'anytime'
         }
+
         return (
           <div className="to-dos">
             <li className="list-item" onClick={() => {
@@ -54,7 +57,7 @@ export default function DisplayList() {
               <br />
             </li>
             <span>
-              <button onClick={() => markComplete(item.id)}>Complete</button>
+              <button className={`complete-${formattedName}`} onClick={() => markComplete(item.id)}>Complete</button>
             </span>
             <span>
               <Link to={{
@@ -66,7 +69,7 @@ export default function DisplayList() {
                   description: item.description
                 }
               }}>
-                <button>Edit</button>
+                <button className={`edit-${formattedName}`}>Edit</button>
               </Link>
             </span>
           </div>

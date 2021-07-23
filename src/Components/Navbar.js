@@ -1,7 +1,6 @@
 import '../Styles/Navbar.css';
 import React, { useState, useContext } from 'react';
-import AppContext from '../Context/AppContext'
-import { Link, useHistory } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 export default function Navbar() {
   const [search, setSearch] = useState('')
@@ -21,10 +20,7 @@ export default function Navbar() {
                 search: search,
               }
             }}>
-              <button onClick={(e) => {
-                e.preventDefault()
-                setSearch('')
-                }}>search</button>
+              <button onClick={(e) => setSearch('')}>search</button>
             </Link>
           </form>
         </li>
