@@ -4,7 +4,7 @@ import '@testing-library/cypress/add-commands'
 
 describe('To Do List 2.0', () => {
   beforeEach(() => {
-    cy.visit(`localhost:3000`)
+    cy.visit(`https://crud-app-raykell-frontend.herokuapp.com/`)
   })
 
   it(`can add new To Do items with date and descriptions`, () => {
